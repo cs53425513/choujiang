@@ -1,0 +1,25 @@
+
+/**
+  * Generates an UUID
+  *
+  * @author     Anis uddin Ahmad 
+  * @param      string  an optional prefix
+  * @return     string  the formatted uuid
+  */
+  function uuid($prefix = '')
+  {
+    $chars = md5(uniqid(mt_rand(), true));
+    $uuid  = substr($chars,0,8) . '-';
+    $uuid .= substr($chars,8,4) . '-';
+    $uuid .= substr($chars,12,4) . '-';
+    $uuid .= substr($chars,16,4) . '-';
+    $uuid .= substr($chars,20,12);
+    return $prefix . $uuid;
+  }  
+ 
+//Example of using the function -
+//Using without prefix.
+echo uuid(); //Returns like ¡®1225c695-cfb8-4ebb-aaaa-80da344e8352¡ä   
+ 
+//Using with prefix
+echo uuid(¡®urn:uuid:¡¯);//Returns like ¡®urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344e8352¡ä
